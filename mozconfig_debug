@@ -1,0 +1,7 @@
+mk_add_options MOZ_MAKE_FLAGS="-s -j8"
+
+ac_add_options --enable-application=browser
+ac_add_options --enable-tests
+
+ac_add_options --enable-debug
+ac_add_options --disable-optimize 
