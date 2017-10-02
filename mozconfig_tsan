@@ -1,0 +1,33 @@
+mk_add_options MOZ_MAKE_FLAGS="-s -j8"
+
+# # Ensure you set this to your LLVM_HOME path
+#export LLVM_HOME="/home/allstars/src/llvm"
+
+# Set CC/CXX based on LLVM_HOME
+export CC="clang"
+export CXX="clang++"
+
+ac_add_options --enable-thread-sanitizer
+
+ac_add_options --disable-sandbox
+
+export LLVM_SYMBOLIZER=/usr/bin/llvm-symbolizer-4.0
+export CFLAGS="-fsanitize=thread -fPIC -pie"
+export CXXFLAGS="-fsanitize=thread -fPIC -pie"
+export LDFLAGS="-fsanitize=thread -fPIC -pie"
+
+# These three are required by TSan
+ac_add_options --disable-jemalloc
+ac_add_options --disable-crashreporter
+ac_add_options --disable-elf-hack
+ac_add_options --enable-pie
+
+export MOZ_DEBUG_SYMBOLS=1
+ac_add_options --enable-debug-symbols
+ac_add_options --disable-install-strip
+
+ac_add_options --enable-application=browser
+ac_add_options --enable-tests
+
+#ac_add_options --enable-debug
+#ac_add_options --disable-optimize 
