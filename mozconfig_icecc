@@ -1,0 +1,13 @@
+ac_add_options --enable-application=browser
+ac_add_options --enable-tests
+
+ac_add_options --enable-debug
+ac_add_options --disable-optimize
+
+# Using ccache
+mk_add_options 'export CCACHE_PREFIX=icecc'
+
+export CC=clang
+export CXX=clang++
+
+ac_add_options --with-ccache
