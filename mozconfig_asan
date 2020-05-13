@@ -2,24 +2,9 @@
 #
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/objdir-ff-asan
 #
-# # Adjust this to the number of CPU cores + 2
-mk_add_options MOZ_MAKE_FLAGS=-j10
-#
 # # Enable ASan specific code and build workarounds
 ac_add_options --enable-address-sanitizer
 #
-# # Ensure you set this to your LLVM_HOME path
-export LLVM_HOME="/home/allstars/src/llvm"
-#
-# # Set CC/CXX based on LLVM_HOME
-export CC="$LLVM_HOME/build/bin/clang"
-export CXX="$LLVM_HOME/build/bin/clang++"
-#
-# # This will ensure the symbolizer is packaged with the binary
-export LLVM_SYMBOLIZER="$LLVM_HOME/build/bin/llvm-symbolizer"
-
-export ASAN_SYMBOLIZER_PATH="$LLVM_HOME/build/bin/llvm-symbolizer"
-
 # # Add ASan to our compiler flags
 export CFLAGS="-fsanitize=address -Dxmalloc=myxmalloc -fPIC"
 export CXXFLAGS="-fsanitize=address -Dxmalloc=myxmalloc -fPIC"
