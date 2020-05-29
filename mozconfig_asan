@@ -13,7 +13,7 @@ export CXXFLAGS="-fsanitize=address -Dxmalloc=myxmalloc -fPIC"
 # # be used during linking as well but there is at least one place in our build where
 # # our CFLAGS are not added during linking.
 # # Note: The use of this flag causes Clang to automatically link the ASan runtime :)
-export LDFLAGS="-fsanitize=address -ldl"
+export LDFLAGS="-fsanitize=address"
 #
 # # These three are required by ASan
 ac_add_options --disable-jemalloc
@@ -24,7 +24,10 @@ ac_add_options --disable-elf-hack
 export MOZ_DEBUG_SYMBOLS=1
 ac_add_options --enable-debug-symbols
 ac_add_options --disable-install-strip
-#
+
+# ASan specific options on Linux
+ac_add_options --enable-valgrind
+
 # # Settings for an opt build (preferred)
 # # The -gline-tables-only ensures that all the necessary debug information for ASan
 # # is present, but the rest is stripped so the resulting binaries are smaller.
