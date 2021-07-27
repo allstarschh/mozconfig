@@ -1,3 +1,4 @@
+# https://firefox-source-docs.mozilla.org/tools/sanitizer/asan.html
 # Combined .mozconfig file for ASan on Linux+Mac
 #
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/objdir-ff-asan
