@@ -6,3 +6,5 @@ ac_add_options --enable-tests
 ac_add_options --enable-debug
 ac_add_options --disable-optimize
 ac_add_options --enable-js-shell
+
+ac_add_options --enable-linker=mold
